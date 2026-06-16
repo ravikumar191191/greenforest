@@ -94,7 +94,66 @@ _See Section 4 update below — populated from live job-board research, run date
 
 Google India PM hubs are largely **Bengaluru, Hyderabad, Gurugram** (context).
 
-[PENDING background agent — appended below]
+> **Sourcing:** google.com/careers and all aggregators 403'd to automated fetch. Job IDs = numeric URL-slug prefixes from search results (high confidence the req exists). Cities/levels/dates from snippet text (**lower confidence**; some may be stale). No reqs/IDs fabricated. WebSearch is US-region — likely **undercounts** India-only consumer reqs (Pay/Play/Next Billion Users).
+
+### 4a. Official google.com reqs — GOOGLE CLOUD / GCP
+URL form: `https://www.google.com/about/careers/applications/jobs/results/<id>-<slug>`
+
+| # | Title | Level | Product area | City (snippet) | Job ID |
+|---|---|---|---|---|---|
+| 1 | TPgM III, Solutions Delivery, Google Cloud | III | Cloud Solutions Delivery | Bengaluru | 128827541849809606 |
+| 2 | Senior Product Manager, Google Cloud | Senior | Cloud (general) | Bengaluru (unconf) | 109591312480510662 |
+| 3 | Product Manager II, Google Cloud | II | Cloud (general) | India (unconf city) | 88132755442803398 |
+| 4 | PM II, Databases & Analytics, Google Cloud | II | Databases/Analytics (BigQuery-adj) | Bengaluru + Hyderabad | 88598970921558726 |
+| 5 | PM II, Cloud Security and Platforms | II | Cloud Security / IAM | Bengaluru | 127104535725253318 |
+| 6 | PM II, Ordering, Cloud Business Platforms | II | Cloud Business Platforms | Bengaluru or Hyderabad | 127381266558264006 |
+| 7 | PM II, Cloud Networking | II | Cloud Networking | Bengaluru + Pune | 118145264799097542 |
+| 8 | PM II, Generative AI, Google Cloud | II | GenAI / Vertex AI-adj | Hyderabad + Bengaluru | 94493036683109062 |
+| 9 | Product Manager II, Google Cloud | II | Cloud (general) | India (unconf) | 87918321711620806 |
+| 10 | PM II, Cloud Business Platforms | II | Cloud Business Platforms | India (unconf) | 101300693041586886 |
+| 11 | Vertex AI Product Manager | not shown | Vertex AI | India (unconf) | 113759136050488006 |
+| 12 | Global Solutions Manager, Vertex AI, Cloud | not shown | Vertex AI | India (unconf) | 141585624023868102 |
+| 13 | Senior PM, Cloud Networking | Senior | Cloud Networking | Bengaluru | 127910925700080326 |
+| 14 | Product Manager, Cloud Networking | not shown | Cloud Networking | Bengaluru (unconf) | 85994248528110278 |
+| 15 | PM, Cloud Capacity Planning | not shown | Cloud Infra | India (unconf) | 138775484635718342 |
+| 16 | PM, Infrastructure as Code, Cloud | not shown | Cloud Infra | India (unconf) | 99650074262282950 |
+| 17 | Product Manager, Apigee | not shown | Apigee (API mgmt) | Bengaluru | 96444186655367878 |
+| 18 | Product Manager, Apigee (GDC) | not shown | Apigee / Distributed Cloud | India (unconf) | 74137664437002950 |
+| 19 | Outbound PM, Apigee, Cloud | not shown | Apigee | Mumbai or Gurgaon | 88489401960538822 |
+| 20 | Group Product Manager, Google Cloud | Group PM | Cloud | India (unconf) | 129173606920790726 |
+| 21 | TPgM, Cloud Business Platforms | not shown | Cloud Business Platforms | Bengaluru + Gurugram + Hyderabad | 117519131866997446 |
+| 22 | TPgM, Data Center Infrastructure, Cloud | not shown | DC Infra | Bengaluru + Hyderabad | 119897908026712774 |
+| 23 | Senior TPgM I, Infrastructure, Cloud | Senior I | Cloud Infra | Bengaluru + Hyderabad | 122573769037226694 |
+| 24 | Senior TPgM, Developer X, Cloud | Senior | Cloud Developer X | Bengaluru + Hyderabad | 76215321714664134 |
+| 25 | TPgM I, Network Deployment Opt., Cloud Networking | I | Cloud Networking | Bengaluru + Hyderabad (window ~Apr 15 2026) | 80835541850825414 |
+
+### 4b. Official google.com reqs — CONSUMER GOOGLE & cross-org
+| # | Title | Level | Division / area | City (snippet) | Job ID |
+|---|---|---|---|---|---|
+| 26 | Product Manager, Google Pay | not shown (5 yrs) | Consumer — Google Pay | Bengaluru (snippet date May 8 2026) | google ID not captured (3rd-party slug 340458) |
+| 27 | PM, Surveys and Data, Google Ads | not shown | Consumer — Ads | Bengaluru (**snippet: "may have been taken down"**) | 132432644804616902 |
+| 28 | Product Manager, YouTube Ads | not shown (3 yrs) | Consumer — YouTube/Ads | India unconf (cross-loc w/ Zurich, Bay Area) | 99411171806716614 |
+| 29 | APM, Early Careers, 2026 Start | APM/entry | Cross-division grad | Bengaluru | 131566176474931910 |
+| 30 | APM, University Graduate, 2026 Start | APM/entry | Cross-division grad | Bengaluru | 118014092890776262 |
+| 31 | TPgM, University Graduate 2026 | entry/MBA grad | Cross-org (Tech) | Bengaluru + Hyderabad | 127715274437599942 |
+| 32 | Program Manager, Ads Measurement & Growth | not shown (5–7 yrs) | Consumer — Ads (PgM, not strictly TPgM) | Bengaluru | google ID not captured (jobaaj slug 1264036) |
+
+> Several consumer PM URLs surfaced (Search; Multimodal Search; Search Ads Quality; Maps Ads; Search Message Ads; Retail Advertiser Experiences) but **India location unconfirmed in snippets — excluded** to avoid false positives. Many Google PM reqs are US-based.
+
+### 4c. COUNTS (distinct India-attributable official reqs, 2026-06-16)
+- **Total distinct:** ~30 (some city/level fields unconfirmed).
+- **By division:** Google Cloud/GCP ≈ **25** (dominant); Consumer (Pay/Ads/YouTube) ≈ **4–5**; cross-division grad/APM ≈ **3**.
+- **By city** (reqs often list multiple): **Bengaluru ≈ 20+** (primary), **Hyderabad ≈ 10** (secondary), **Gurugram/Gurgaon = 2**, **Pune = 1**, **Mumbai = 1**, **Chennai = 0 found on 2026-06-16**, **Noida = 0 found on 2026-06-16**.
+
+### 4d. Anecdotal aggregate counts (third-party, inflated — directional only)
+- LinkedIn India: "97 Google TPgM jobs", "1,000+ Google PM jobs", "180 PM jobs Greater Hyderabad", "218 PM jobs Gurgaon" — include reposts/non-Google. (in.linkedin.com)
+- Indeed India: "17 Google PM jobs in Bengaluru — 16 June 2026" (current); "800 Cloud PM vacancies Bengaluru" (inflated). (in.indeed.com)
+- Glassdoor India: Google Hyderabad "78–79 open positions". (glassdoor.co.in)
+- byp.network corroborates req #21 (TPgM Cloud Business Platform, Bengaluru, posted May 24 2026).
+
+Source URLs: 30+ google.com/about/careers/.../<job-id> URLs (per tables; all 403 to fetch, IDs from search) · https://in.linkedin.com/jobs/google-product-manager-jobs · https://in.linkedin.com/jobs/google-technical-program-manager-jobs · https://in.indeed.com/q-google-product-manager-l-bengaluru,-karnataka-jobs.html · https://www.glassdoor.co.in/Jobs/Google-Technical-Program-Manager-India-Jobs-EI_IE9079.0,6_KO7,32_IL.33,38_IN115.htm · https://www.byp.network/jobs/535828891-technical-program-manager-google-cloud-business-platform-at-google
+
+**Honest gaps:** no field read from a live rendered page (snippets only); open/filled status not guaranteed (#27 possibly taken down); levels/dates missing for many Cloud reqs; #26 and #32 lack canonical google IDs.
 
 ---
 
