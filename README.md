@@ -13,11 +13,19 @@ The whole game is one file, `docs/index.html`, with no build step and no depende
 
 ## Play it on your iPhone today (no Mac needed)
 
-1. On GitHub, open **Settings → Pages**. Under **Build and deployment**, set **Source** to *Deploy from a branch*, pick the `main` branch and the **/docs** folder, and save.
+1. On GitHub, open **Settings → Pages**. Under **Build and deployment**, set **Source** to *Deploy from a branch*, pick the branch (`main` once this is merged, or the feature branch to test it first) and the **/docs** folder, and save.
 2. After a minute the game is live at `https://ravikumar191191.github.io/greenforest/`.
 3. Open that link in Safari on your iPhone, tap the **Share** button, then **Add to Home Screen**.
 
 The home-screen copy runs full screen with no browser bars, keeps working offline, and gets its own icon. Sound needs one tap first because iOS mutes audio until you interact.
+
+## Try it in the iPhone Simulator (Mac)
+
+1. Open `ios/RatHunter.xcodeproj` in Xcode.
+2. In the run destination menu at the top, pick any iPhone simulator (for example *iPhone 16*).
+3. Press **Run** (⌘R). No signing or Apple ID is needed for the Simulator.
+
+Click and drag stands in for a finger. Haptics do not fire in the Simulator; everything else, including sound, works. **Device → Rotate** tests landscape.
 
 ## Ship it as a real iPhone app
 
@@ -52,7 +60,7 @@ Create a fresh project in Xcode: **File → New → Project → iOS → App**, n
 | **RELOAD** button (also automatic when the magazine is empty) | R |
 | **ZOOM** button, 1× / 2× | Z |
 | **II** pauses | P or Esc |
-| Options → Night vision | N switches green / white phosphor |
+| Options → Night vision | N cycles the five palettes |
 | Options → Sound | M mutes |
 
 Options also let you move the FIRE button to the left side, enable tap-to-fire on the scene, and change the aim speed. Settings and the best score are remembered on the device.
@@ -62,7 +70,8 @@ Options also let you move the FIRE button to the left side, enable tap-to-fire o
 - **Rounds.** Round *n* has *4 + n* rats (up to 14). You are issued 3 rounds of ammo per rat, in 5-round magazines, with a bolt cycle between shots. Leftover ammo and accuracy above 50% earn a bonus at the end of the round.
 - **Rats.** They come out of four holes, stop to sniff, sometimes hide behind the hay, barrels and crates, then either cross the barn or go for the grain pile. A rat that finishes eating runs home carrying a sack; stop it before it reaches a hole. Faster and less patient every round.
 - **Scoring.** 100 per rat, more for a moving rat and for a distant one. Hits in a row multiply the score up to 3×. A miss resets the streak.
-- **The tube.** Two authentic phosphor palettes: P43 green (classic image intensifier) and white phosphor (the look of the original clip). The overlay, noise, scanlines and auto-gain dip after a muzzle flash are all drawn on a `<canvas>`; there are no image assets.
+- **The tube.** Five palettes, switchable from the title screen, Options or the pause menu: white phosphor (the look of the original clip, the default), digital (the cool tint of a modern low-light sensor), amber, thermal (ironbow: cold purple, hot orange rats) and P43 green (the classic image intensifier). The overlay, noise, scanlines and auto-gain dip after a muzzle flash are all drawn on a `<canvas>`; there are no image assets.
+- **First play.** The first round coaches you: a pulsing prompt to drag, then a ring around FIRE until your first shot. After that the hints never come back.
 
 ## Project layout
 

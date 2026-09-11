@@ -14,6 +14,7 @@ struct GameView: UIViewRepresentable {
         config.userContentController.add(context.coordinator, name: "haptic")
 
         let webView = WKWebView(frame: .zero, configuration: config)
+        UIApplication.shared.isIdleTimerDisabled = true   // a game with long aiming pauses must not auto-lock
         webView.isOpaque = false
         webView.backgroundColor = .black
         webView.scrollView.backgroundColor = .black
