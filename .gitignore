@@ -1,0 +1,15 @@
+# Xcode
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/**/project.xcworkspace/xcuserdata/
+ios/build/
+ios/DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+
+# Node (only if you add tooling later)
+node_modules/
