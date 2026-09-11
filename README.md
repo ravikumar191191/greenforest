@@ -2,7 +2,7 @@
 
 An arcade sniper game for iPhone, built from the viral clip of a man clearing rats one by one through a night-vision scope after his traps stopped working.
 
-You look through the scope. Rats come out of the holes and go for the grain. Drag to pan, wait for the rat to stop and sniff, tap **FIRE**. A rat that carries a sack back to its hole steals it. Lose all three sacks and the game is over.
+You look through the scope. Rats come out of the holes and go for the grain. Drag to pan, wait for the rat to stop and sniff, tap anywhere to fire. A rat that carries a sack back to its hole steals it. Lose all three sacks and the game is over.
 
 <p>
   <img src="assets/title.png" width="280" alt="Title screen: RAT HUNTER: NIGHT VISION SNIPER in green phosphor over a barn">
@@ -56,14 +56,14 @@ Create a fresh project in Xcode: **File → New → Project → iOS → App**, n
 | On the phone | On a keyboard (desktop testing) |
 | --- | --- |
 | Drag anywhere to pan the scope | Arrow keys, or drag with the mouse |
-| **FIRE** button | Space or Enter |
+| Tap anywhere to fire (the **FIRE** button works too) | Click, Space or Enter |
 | **RELOAD** button (also automatic when the magazine is empty) | R |
 | **ZOOM** button, 1× / 2× | Z |
 | **II** pauses | P or Esc |
 | Options → Night vision | N cycles the five palettes |
 | Options → Sound | M mutes |
 
-Options also let you move the FIRE button to the left side, enable tap-to-fire on the scene, and change the aim speed. Settings and the best score are remembered on the device.
+Options also let you move the FIRE button to the left side, turn tap-anywhere-to-fire off (button only), and change the aim speed. Settings and the best score are remembered on the device.
 
 ## How the game works
 

@@ -93,8 +93,9 @@ const store = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* ignore */ } },
 };
 const savedOpt = store.get('rh.opt', {});
-if (savedOpt.v !== 2) delete savedOpt.palette;   // v1 saves defaulted to green; let the new default win once
-const OPT = Object.assign({ v: 2, palette: 'white', sound: true, leftHand: false, tapFire: false, aim: 1 }, savedOpt);
+if (!(savedOpt.v >= 2)) delete savedOpt.palette;   // v1 saves defaulted to green; let the new default win once
+if (!(savedOpt.v >= 3)) delete savedOpt.tapFire;   // v2 saves defaulted tap-to-fire off; now it is on
+const OPT = Object.assign({ v: 3, palette: 'white', sound: true, leftHand: false, tapFire: true, aim: 1 }, savedOpt);
 function saveOpt() { store.set('rh.opt', OPT); }
 
 // ---------- palette ----------
@@ -885,7 +886,7 @@ function pressButton(b) {
   else if (b.id === 'pause') togglePause();
 }
 function tapScene() {
-  // a tap (no drag) on the scene itself
+  // a tap (no drag) anywhere on the scene: in play that is the trigger
   if (G.state === 'title') { Audio.sfx.select(); startGame(); }
   else if (G.state === 'over') fire();
   else if (G.state === 'intro' || G.state === 'clear') fire();
@@ -900,14 +901,16 @@ canvas.addEventListener('pointerdown', e => {
   const b = buttonAt(x, y);
   if (b) { pointers.set(e.pointerId, { role: 'btn', b }); pressed.add(b.id); pressButton(b); return; }
   if (G.state === 'boot') return;
-  pointers.set(e.pointerId, { role: 'aim', x, y, moved: false });
+  pointers.set(e.pointerId, { role: 'aim', x, y, sx: x, sy: y, moved: false });
   if (aimId === null) aimId = e.pointerId;
 }, { passive: false });
+const TAP_SLOP = 10;   // px a finger may wander and still count as a tap (a shot), not a drag (a pan)
 canvas.addEventListener('pointermove', e => {
   const p = pointers.get(e.pointerId);
-  if (!p || p.role !== 'aim' || e.pointerId !== aimId) return;
+  if (!p || p.role !== 'aim') return;
+  if (!p.moved && Math.hypot(e.clientX - p.sx, e.clientY - p.sy) > TAP_SLOP) p.moved = true;
+  if (e.pointerId !== aimId) return;   // a second finger only ever taps
   const dx = e.clientX - p.x, dy = e.clientY - p.y;
-  if (!p.moved && Math.hypot(e.clientX - p.x, e.clientY - p.y) > 6) p.moved = true;
   if (p.moved && (G.state === 'play' || G.state === 'title' || G.state === 'intro')) {
     if (G.state === 'play') G.didDrag = true;
     const s = viewScale();
@@ -1139,7 +1142,7 @@ function drawHints() {
     ctx.moveTo(cx + 40 + sw, y); ctx.lineTo(cx + 30 + sw, y - 7); ctx.moveTo(cx + 40 + sw, y); ctx.lineTo(cx + 30 + sw, y + 7);
     ctx.stroke();
   } else if (!G.didFire) {
-    label('LINE UP A RAT, THEN TAP FIRE', cx, cy + 130, f.mid, PAL.ramp[6], 'center');
+    label(OPT.tapFire ? 'LINE UP A RAT, TAP ANYWHERE TO FIRE' : 'LINE UP A RAT, THEN TAP FIRE', cx, cy + 130, f.mid, PAL.ramp[6], 'center');
     // a ring pulsing around the FIRE button
     const b = BTN.fire, r = b.r + 10 + 8 * Math.sin(G.stateT * 4);
     ctx.strokeStyle = PAL.ramp[6]; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(b.x, b.y, r, 0, TAU); ctx.stroke();
@@ -1243,7 +1246,7 @@ function drawOptions() {
     ['NIGHT VISION', PAL.label, cyclePalette],
     ['SOUND', OPT.sound ? 'ON' : 'OFF', () => setSound(!OPT.sound)],
     ['FIRE BUTTON', OPT.leftHand ? 'LEFT HAND' : 'RIGHT HAND', () => { OPT.leftHand = !OPT.leftHand; saveOpt(); layoutButtons(); }],
-    ['TAP SCENE TO FIRE', OPT.tapFire ? 'ON' : 'OFF', () => { OPT.tapFire = !OPT.tapFire; saveOpt(); }],
+    ['TAP ANYWHERE TO FIRE', OPT.tapFire ? 'ON' : 'OFF', () => { OPT.tapFire = !OPT.tapFire; saveOpt(); }],
     ['AIM SPEED', OPT.aim === 0.7 ? 'SLOW' : OPT.aim === 1.4 ? 'FAST' : 'NORMAL', () => { OPT.aim = OPT.aim === 0.7 ? 1 : OPT.aim === 1 ? 1.4 : 0.7; saveOpt(); }],
   ];
   let y = p.y + 72;
@@ -1261,8 +1264,8 @@ function drawHelp() {
   const p = panel(Math.min(W - 32, 400), 350);
   label('HOW TO PLAY', W / 2, p.y + 22, f.mid + 2, PAL.ramp[6], 'center');
   const lines = [
-    'DRAG ANYWHERE TO PAN THE SCOPE.',
-    'TAP FIRE TO SHOOT WHAT IS UNDER',
+    'DRAG TO PAN THE SCOPE. TAP',
+    'ANYWHERE TO SHOOT WHAT IS UNDER',
     'THE RETICLE. WAIT FOR THE STOP.',
     '',
     'RATS COME OUT OF THE HOLES AND',
